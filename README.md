@@ -17,20 +17,17 @@ Abaixo está o fluxograma detalhado do funcionamento:
 ## 📊 Diagrama de Fluxo
 
 ```mermaid
-flowchart TD
-    Start([Início])
-    Start --> InputSalario[/Inserir salário bruto/]
-    InputSalario --> InputDependentes[/Informar número de dependentes/]
-    InputDependentes --> InputBeneficios[/Selecionar benefícios utilizados: VT, VA, VR, Plano de Saúde/]
-    
-    InputBeneficios --> CalculoINSS[Calcular desconto do INSS]
-    CalculoINSS --> CalculoIRRF[Calcular desconto do IRRF]
-    CalculoIRRF --> SomaBeneficios[Calcular descontos de benefícios: VT, VA, VR, Plano de Saúde]
-    
-    SomaBeneficios --> SomaDescontos[Somar todos os descontos]
-    SomaDescontos --> CalculoLiquido[Calcular salário líquido]
-    CalculoLiquido --> ExibirResumo[/Exibir resumo detalhado com percentual de desconto/]
-    ExibirResumo --> Fim([Fim]) 
+graph TD
+  Start("Início") --> SalarioBruto[/"Inserir salário bruto"/]
+  SalarioBruto --> Dependentes[/"Informar número de dependentes"/]
+  Dependentes --> Plano[/"Selecionar plano de saúde"/]
+  Plano --> Beneficios[/"Informar benefícios (VT, VA, VR)"/]
+  Beneficios --> CalculoINSS["Calcular INSS"]
+  CalculoINSS --> CalculoIR["Calcular IR"]
+  CalculoIR --> SomaDescontos["Somar todos os descontos"]
+  SomaDescontos --> SalarioLiquido["Calcular salário líquido"]
+  SalarioLiquido --> Resultado["Exibir resultado"]
+
 
 
 
