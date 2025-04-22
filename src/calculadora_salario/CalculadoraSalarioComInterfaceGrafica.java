@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe principal que implementa a interface gráfica para a calculadora de salário líquido.
+ * Esta classe é uma evolução do código inicial baseado em console.
+ */
 public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
 
     // Componentes da interface gráfica
@@ -15,10 +19,13 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
     private JTextArea areaResultado; // Área de texto para exibir os resultados
     private JPanel painelGrafico; // Painel para exibir o gráfico de pizza
 
+    /**
+     * Construtor da classe que configura a interface gráfica.
+     */
     public CalculadoraSalarioComInterfaceGrafica() {
         // Configurações básicas da janela
-        setTitle("Calculadora de Salário Líquido"); // Título da janela
-        setSize(620, 820); // Tamanho da janela
+        setTitle("Calculadora de Salário Líquido"); // Define o título da janela
+        setSize(620, 820); // Define o tamanho da janela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao fechar a janela
         setLayout(new BorderLayout()); // Define o layout principal como BorderLayout
 
@@ -75,7 +82,6 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
         // Área de texto para exibir os resultados
         areaResultado = new JTextArea(20, 50); // Área de texto com 20 linhas e 50 colunas
         areaResultado.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 10)); // Margem ao redor do painel
-
         areaResultado.setEditable(false); // Torna a área de texto somente leitura
         areaResultado.setFont(new Font("Monospaced", Font.PLAIN, 14)); // Define a fonte como monoespaçada
         JScrollPane scrollPane = new JScrollPane(areaResultado); // Adiciona barra de rolagem à área de texto
@@ -112,7 +118,14 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
         setVisible(true); // Torna a janela visível
     }
 
-    // Método para calcular o salário líquido
+    /**
+     * Método para calcular o salário líquido.
+     * Esta lógica foi adaptada do código inicial baseado em console.
+     * 
+     * Código inicial começa aqui:
+     * - A lógica de cálculo do INSS, IR, benefícios e plano de saúde foi mantida.
+     * - Apenas a entrada e saída de dados foram adaptadas para a interface gráfica.
+     */
     private void calcularSalario() {
         try {
             // Obtém os valores dos campos de entrada
@@ -125,7 +138,8 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
             boolean usaVA = checkVA.isSelected();
             boolean usaVR = checkVR.isSelected();
 
-            // Lógica de cálculo
+            // Lógica de cálculo (mantida do código inicial)
+            ////////////////////////////////////////////////
             double descontoINSS;
             if (salarioBruto <= 1302.00) {
                 descontoINSS = salarioBruto * 0.08;
@@ -168,7 +182,8 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
             double totalDescontos = descontoINSS + descontoIR + descontoVT + descontoVA + descontoVR + descontoPlano;
             double salarioLiquido = salarioBruto - totalDescontos;
             double percentualDesconto = (totalDescontos / salarioBruto) * 100;
-
+            
+            /////////////////////////////////////
             // Exibir resultados na área de texto
             areaResultado.setText(""); // Limpa a área de texto
             areaResultado.append(String.format("Salário Bruto: R$ %.2f\n", salarioBruto));
@@ -188,10 +203,15 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos!");
         }
     }
+    // Código inicial termina aqui.
 
-    // Método para desenhar o gráfico de pizza
+    /**
+     * Método para desenhar o gráfico de pizza.
+     * Este método foi adicionado para a interface gráfica.
+     */
     private void desenharGrafico(Graphics g) {
         try {
+            // Obtém os valores dos campos de entrada
             double salarioBruto = Double.parseDouble(campoSalarioBruto.getText());
             int dependentes = Integer.parseInt(campoDependentes.getText());
             String planoSaude = (String) comboPlanoSaude.getSelectedItem();
@@ -199,7 +219,9 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
             boolean usaVT = checkVT.isSelected();
             boolean usaVA = checkVA.isSelected();
             boolean usaVR = checkVR.isSelected();
-
+            
+            ////////////////////////////////////////////////////////////
+            // Lógica de cálculo (mesma usada no método calcularSalario)
             double descontoINSS;
             if (salarioBruto <= 1302.00) {
                 descontoINSS = salarioBruto * 0.08;
@@ -241,7 +263,8 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
 
             double totalDescontos = descontoINSS + descontoIR + descontoVT + descontoVA + descontoVR + descontoPlano;
             double salarioLiquido = salarioBruto - totalDescontos;
-
+             
+            /////////////////////////////////////////////
             // Calcula os ângulos para o gráfico de pizza
             double[] valores = {salarioLiquido, descontoINSS, descontoIR, descontoVT, descontoVA, descontoVR, descontoPlano};
             Color[] cores = {Color.GREEN, Color.BLUE, Color.RED, Color.ORANGE, Color.MAGENTA, Color.CYAN, Color.PINK};
@@ -276,7 +299,9 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
         }
     }
 
-    // Método para limpar os campos de entrada e a área de resultado
+    /**
+     * Método para limpar os campos de entrada e a área de resultado.
+     */
     private void limparCampos() {
         campoSalarioBruto.setText(""); // Limpa o campo de salário bruto
         campoDependentes.setText(""); // Limpa o campo de dependentes
