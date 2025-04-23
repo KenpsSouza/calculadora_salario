@@ -317,3 +317,22 @@ public class CalculadoraSalarioComInterfaceGrafica extends JFrame {
         SwingUtilities.invokeLater(() -> new CalculadoraSalarioComInterfaceGrafica());
     }
 }
+
+/**
+Resumo das mudanças:
+
+Entrada e saída de dados:
+ Antes: Usava Scanner para capturar dados no console.
+ Agora: Usa componentes gráficos como JTextField, JComboBox e JCheckBox.
+ 
+Exibição de resultados:
+ Antes: Exibia os resultados no console com System.out.println.
+ Agora: Exibe os resultados em uma JTextArea.
+
+Adição de interface gráfica:
+ Criada com JFrame, JPanel, JButton e outros componentes Swing.
+ Adicionado um gráfico de pizza para visualização dos descontos.
+
+Lógica de cálculo:
+ Mantida: A lógica de cálculo do INSS, IR, benefícios e plano de saúde foi reutilizada
+ sem alterações significativas. **/
