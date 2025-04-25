@@ -50,7 +50,7 @@ public class CalculadoraSalario {
         double baseIR = salarioBruto - (dependentes * 189.59); // Reduz a base de cálculo do IR conforme o número de dependentes
         double descontoIR;
 
-        // Faixas do Imposto de Renda
+        // Faixas  Imposto de Renda
         if (baseIR <= 1903.98) {
             descontoIR = 0; // Isenção de IR até 1903.98
         } else if (baseIR <= 2826.65) {
