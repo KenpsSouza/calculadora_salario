@@ -40,7 +40,7 @@ public class CalculadoraSalario {
             descontoINSS = salarioBruto * 0.11; // 11%  até 3856
         } else {
             descontoINSS = salarioBruto * 0.14; // 14% acima de 3856
-            // O desconto não pode ultrapassar 570.88,
+            // para o desconto não ultrapassar 570.88, tudo que passar desse valor será = 570.88
             if (descontoINSS > 570.88) {
                 descontoINSS = 570.88;
             }    
@@ -68,7 +68,7 @@ public class CalculadoraSalario {
         double descontoVA = vAlimentacao.equals("S") ? 200.0 : 0; // Desconto de 200 no VA se sim
         double descontoVR = vRefeicao.equals("S") ? 250.00 : 0; // Desconto de 250 no VR se sim
 
-        // Desconto do plano de saúde, dependendo do plano ou sem 
+        // Desconto do plano de saúde, dependendo do plano ou sem plano algum
         double descontoPlano = 0;  
         if (planoSaude.equals("B")) {
             descontoPlano = 150.0;
