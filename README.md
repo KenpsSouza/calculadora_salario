@@ -27,6 +27,12 @@ graph TD
   CalculoIR --> SomaDescontos["Somar todos os descontos"]
   SomaDescontos --> SalarioLiquido["Calcular salário líquido"]
   SalarioLiquido --> Resultado["Exibir resultado"]
+```
+## 🚀 Como Executar
+1. Certifique-se de ter o Java instalado (versão 8 ou superior).
+2. Compile o programa:
+   ```bash
+   javac CalculadoraSalario.java
 
 
 
